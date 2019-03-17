@@ -11,6 +11,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { ProductCategoryComponent } from './product-category/product-category.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     ProductCardComponent,
     ProductDetailComponent,
-    LoginComponent
+    LoginComponent,
+    ProductCategoryComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,9 @@ import { FormsModule } from '@angular/forms';
     RouterModule.forRoot([
       { path: "login", component: LoginComponent },
       { path: "products", component: ProductsComponent },
-      { path: "products/:id", component: ProductDetailComponent }
+      { path: "products/:id", component: ProductDetailComponent },
+      { path: "cart", component: CartComponent }
+
     ])
   ],
   providers: [

@@ -1,12 +1,24 @@
 <!-- <h1 *ngFor="let p of productList">{{p.id}} - {{p.name}}</h1> -->
 
+<div class="container">
 <div class="row">
-    <div *ngFor="let p of productList" class="card" style="width: 18rem;">
-        <img class="card-img-top" [src]="p.image" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">{{p.name}}</h5>
-            <p class="card-text">5</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+    <!-- <ul class="list-group list-group-horizontal-sm">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+      </ul> -->
+    <div *ngFor="let p of productList">
+        <div class="col">
+    
+            <div class="card">
+                <img class="card-img-top" [src]="p.image" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{p.name}}</h5>
+                    <p class="card-text">{{p.price | currency:'GBP'}}</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 </div>
