@@ -9,16 +9,20 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailComponent implements OnInit {
 
-  product = {};
+  id;
+  product: any = {};
+  cart: any = {};
+  quantity = 1;
+  filledCart = false;
 
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute
-    ) { }
+  ) { }
 
   ngOnInit() {
-
-    this.productService.get(2).subscribe(result => {
+    this.id = this.route.snapshot.paramMap.get("id");
+    this.productService.get(this.id).subscribe(result => {
       this.product = result;
     });
   }

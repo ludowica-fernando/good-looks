@@ -1,2 +1,27 @@
-<h1>{{product.id}}</h1>
-<h1>{{product.name}}</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="pro-img-details">
+                <img [src]="product.image" alt="product-image">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4 class="pro-d-title">
+                <h3>{{product.name}}</h3>
+            </h4>
+            <div class="m-bot15">
+                <h4>£{{product.price}}</h4>
+            </div>
+            <div class="form-group">
+                <label>Quantity</label>
+                <input type="number" class="form-control quantity" [ngModel]="quantity"
+                    (ngModelChange)="valueChange($event)" min="1">
+            </div>
+            <p>
+                <button class="btn btn-success" type="button" (click)="addToCart()">
+                    <i class="fa fa-shopping-cart"></i> Add to Cart
+                </button>
+            </p>
+        </div>
+    </div>
+</div>

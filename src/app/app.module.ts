@@ -1,3 +1,4 @@
+import { CartService } from './services/cart.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -34,12 +35,15 @@ import { CartComponent } from './cart/cart.component';
       { path: "login", component: LoginComponent },
       { path: "products", component: ProductsComponent },
       { path: "products/:id", component: ProductDetailComponent },
-      { path: "cart", component: CartComponent }
+      { path: "cart", component: CartComponent },
+      { path: "category", component: ProductCategoryComponent },
+      { path: "product-detail", component: ProductDetailComponent }
 
     ])
   ],
   providers: [
     ProductService,
+    CartService
   ],
   bootstrap: [AppComponent]
 })
