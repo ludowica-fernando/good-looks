@@ -1,48 +1,18 @@
-<h1>Shopping Cart</h1>
-<ng-container *ngIf="cart">
-  <p>
-    {{ cartProductCount }} items in Cart
-  </p>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Product</th>
-        <th>Unit Price</th>
-        <th class="text-center">Quantity</th>
-        <th>Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let cartItem of cart.cartProducts">
-        <td>{{cartItem.product.id}} - {{cartItem.product.name}}</td>
-        <td>{{cartItem.product.price | currency:'LKR ' : 'symbol' : '1.0'}}</td>
-        <td class="text-center">
-          <div class="row no-gutters">
-            <div class="col-2">
-              <!-- <button (click)="decreaseCartItem(cartItem)" class="btn btn-primary btn-block"
-                [disabled]="cartItem.quantity <= 1">-</button> -->
-              <button (click)="decreaseCartItem(cartItem)" class="btn btn-primary btn-block">-</button>
-            </div>
-            <div class="col text-center">{{ cartItem.quantity }} in cart</div>
-            <div class="col-2">
-              <button (click)="increaseCartItem(cartItem)" class="btn btn-primary btn-block">+</button>
-            </div>
-          </div>
-
-        </td>
-        <td>{{cartItem.quantity*cartItem.product.price | currency:'LKR ' : 'symbol' : '1.0'}}</td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <th>{{totalPrice | currency:'LKR ' : 'symbol' : '1.0'}}</th>
-      </tr>
-    </tfoot>
-  </table>
-
-  <button (click)="clearCart()" class="btn btn-danger">Clear Cart</button>
-</ng-container>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Item</th>
+      <th scope="col">Qty</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of cart.cartProduct">
+      <td> {{c.quantity}} </td>
+      <td> {{c.product.name}} </td>
+      <td><img class="card-img-top" [src]="c.product.image" alt="Item image" style="width: 200px"></td>
+      <td>£{{c.product.price*c.quantity}}</td>
+    </tr>
+  </tbody>
+</table>
