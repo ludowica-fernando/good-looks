@@ -9,7 +9,7 @@ import { Cart } from '../models/cart';
 })
 export class CartService {
 
-    apiUrl = "http://localhost:8080/carts";
+    apiUrl = "/carts";
 
     constructor(
         private http: HttpClient,
