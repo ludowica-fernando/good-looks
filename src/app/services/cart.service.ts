@@ -1,3 +1,4 @@
+import { CartProduct } from './../models/cart-product';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -9,7 +10,7 @@ import { Cart } from '../models/cart';
 })
 export class CartService {
 
-    apiUrl = "/carts";
+    apiUrl = "/api/carts";
 
     constructor(
         private http: HttpClient,
@@ -24,7 +25,7 @@ export class CartService {
         return this.http.post(this.apiUrl, param);
     }
 
-    deleteCartItem(cartItem): Observable<{}> {
+    deleteCartItem(cartItem) {
 
         const options = {
             headers: new HttpHeaders({ 'Content-Type': 'application/json' }),

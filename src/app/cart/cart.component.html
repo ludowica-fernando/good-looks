@@ -1,4 +1,4 @@
-<div class="containt">
+<div class="container">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -9,12 +9,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let c of cart.cartProduct">
-        <td><img class="card-img-top" [src]="c.product.image" alt="Item image" style="width: 200px"></td>
-        <td> {{c.product.name}} </td>
-        <td> {{c.quantity}} </td>
-        <td>£{{c.product.price*c.quantity}}</td>
-        <td><button>Remove</button></td>
+      <tr *ngFor="let cartProduct of cart.cartProduct">
+        <td><img class="card-img-top" [src]="cartProduct.product.image" alt="Item image" style="width: 100px"></td>
+        <td> {{cartProduct.product.name}} </td>
+        <td>
+          <button (click)="decreaseQty(cartProduct)">-</button>
+          {{cartProduct.quantity}}
+          <button (click)="increaseQty(cartProduct)">+</button>
+        </td>
+        <td>£{{cartProduct.product.price*cartProduct.quantity}}</td>
+        <td><button (click)="removeItem(cartProduct)">Remove</button></td>
       </tr>
     </tbody>
   </table>
