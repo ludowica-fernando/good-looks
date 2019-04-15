@@ -27,8 +27,6 @@ export class ProductsComponent implements OnInit {
       quantity: 1
     };
 
-    console.log(cartItem)
-
     this.cartService.addOrUpdate(cartItem).subscribe();
   }
 

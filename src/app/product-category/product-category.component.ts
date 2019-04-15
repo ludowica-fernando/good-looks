@@ -17,4 +17,8 @@ export class ProductCategoryComponent implements OnInit {
     });
   }
 
+  getProduct() {
+
+  }
+
 }

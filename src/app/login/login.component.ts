@@ -19,9 +19,7 @@ export class LoginComponent implements OnInit {
     private cartService: CartService,
     private router: Router) { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   submit(form) {
     this.authService.login(form.username, form.password).subscribe(results => {
@@ -32,7 +30,7 @@ export class LoginComponent implements OnInit {
         this.sessionService.saveUsername(this.user.username)
 
         this.cartService.getCart().subscribe();
-        
+
         this.router.navigateByUrl('/products');
       }
       else {

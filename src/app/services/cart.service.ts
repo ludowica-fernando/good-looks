@@ -1,4 +1,3 @@
-import { CartProduct } from './../models/cart-product';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -15,18 +14,13 @@ export class CartService {
     constructor(
         private http: HttpClient,
         private sessionService: SessionStorageService
-    ) {
-
-        // let cartId = this.sessionService.getCartId();
-        //this.channel = this.pusherService.getPusher().subscribe('cart' + cartId);
-    }
+    ) { }
 
     addOrUpdate(param): Observable<{}> {
         return this.http.post(this.apiUrl, param);
     }
 
     deleteCartItem(cartItem) {
-
         const options = {
             headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
             body: cartItem
@@ -59,5 +53,4 @@ export class CartService {
         let userId = this.sessionService.getUserId();
         return this.http.post(this.apiUrl + '/create', userId);
     }
-
 }
