@@ -1,3 +1,4 @@
+import { UserService } from './services/user.service';
 import { CartService } from './services/cart.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -41,7 +42,8 @@ import { FooterComponent } from './footer/footer.component';
   ],
   providers: [
     ProductService,
-    CartService
+    CartService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
