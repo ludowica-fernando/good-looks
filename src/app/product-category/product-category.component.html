@@ -1,12 +1,9 @@
 <div class="container">
   <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action">Lipsticks</a>
-    <a href="#" class="list-group-item list-group-item-action">Face</a>
-    <a href="#" class="list-group-item list-group-item-action">Contour</a>
-    <a href="#" class="list-group-item list-group-item-action">Eyeshadows</a>
-    <a href="#" class="list-group-item list-group-item-action">Brows</a>
-    <a href="#" class="list-group-item list-group-item-action">Highlighters</a>
-    <a href="#" class="list-group-item list-group-item-action">Brushes</a>
-    <a href="#" class="list-group-item list-group-item-action">Nails</a>
+    <a class="list-group-item list-group-item-action" routerLink="/" [class.active]="!selectedCategory">All Products</a>
+    <a *ngFor="let category of categoryList" class="list-group-item list-group-item-action" routerLink="/"
+      [class.active]="category.keyword === selectedCategory" [queryParams]="{ category: category.keyword }">
+      {{ category.name }}
+    </a>
   </div>
 </div>
