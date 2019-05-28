@@ -23,12 +23,9 @@ export class ProductsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
-    this.categoryFilter();
-
     this.productService.getAll().subscribe(results => {
       this.productList = results;
-
+      this.categoryFilter();
     });
   }
 
@@ -40,7 +37,11 @@ export class ProductsComponent implements OnInit {
       quantity: 1
     };
 
-    this.cartService.addOrUpdate(cartItem).subscribe();
+    // console.log(cartItem);
+
+    this.cartService.addOrUpdate(cartItem).subscribe(data=>{
+      // console.log(data);
+    });
   }
 
   categoryFilter() {

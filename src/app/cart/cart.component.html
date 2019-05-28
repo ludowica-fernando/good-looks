@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let cartProduct of cart.cartProduct">
+      <tr *ngFor="let cartProduct of cart.cartProducts">
         <td><img class="card-img-top" [src]="cartProduct.product.image" alt="Item image" style="width: 100px"></td>
         <td> {{cartProduct.product.name}} </td>
         <td>

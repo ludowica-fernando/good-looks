@@ -2,7 +2,7 @@
   <div class="list-group">
     <a class="list-group-item list-group-item-action" routerLink="/" [class.active]="!selectedCategory">All Products</a>
     <a *ngFor="let category of categoryList" class="list-group-item list-group-item-action" routerLink="/"
-      [class.active]="category.keyword === selectedCategory" [queryParams]="{ category: category.keyword }">
+      [class.active]="category.id === selectedCategory" [queryParams]="{ category: category.id }">
       {{ category.name }}
     </a>
   </div>

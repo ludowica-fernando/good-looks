@@ -16,20 +16,24 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.cartService.getCart().subscribe(data => {
       this.cart = data;
+      // console.log(data)
     });
   }
 
-  increaseQty(cartProduct) {
+  increaseQty(cartProducts) {
 
     let cartId = this.cartService.getOrCreateCartId();
 
     let newCartItem = {
       cartId: cartId,
-      productId: cartProduct.product.id,
-      quantity: cartProduct.quantity + 1
+      productId: cartProducts.product.id,
+      quantity: cartProducts.quantity + 1
     };
 
+    // console.log(newCartItem);
+
     this.cartService.addOrUpdate(newCartItem).subscribe(data => {
+      // console.log(data);
       this.updateList(data);
     });
   }
@@ -50,8 +54,8 @@ export class CartComponent implements OnInit {
   }
 
   updateList(newCartItem) {
-    let index = this.cart.cartProduct.findIndex(item => item.id == newCartItem.id);
-    this.cart.cartProduct[index] = newCartItem;
+    let index = this.cart.cartProducts.findIndex(item => item.id == newCartItem.id);
+    this.cart.cartProducts[index] = newCartItem;
   }
 
   removeItem(cartProduct) {
@@ -65,7 +69,7 @@ export class CartComponent implements OnInit {
 
     this.cartService.deleteCartItem(deleteCartProduct).subscribe(data => {
     
-      this.cart.cartProduct = this.cart.cartProduct.filter(item => item.id !== data['id']);
+      this.cart.cartProducts = this.cart.cartProducts.filter(item => item.id !== data['id']);
     });
   }
 }
