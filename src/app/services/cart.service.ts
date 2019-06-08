@@ -43,14 +43,14 @@ export class CartService {
         let cartId = this.sessionService.getCartId();
         if (cartId) return cartId;
 
-        this.create().subscribe(data => {
+        this.fetch().subscribe(data => {
             this.sessionService.saveCartId(data['id']);
             return this.sessionService.getCartId();
         });
     }
 
-    private create() {
+    fetch() {
         let userId = this.sessionService.getUserId();
-        return this.http.post(this.apiUrl + '/create', userId);
+        return this.http.get(this.apiUrl + '/fetch' + `/${userId}`);
     }
 }

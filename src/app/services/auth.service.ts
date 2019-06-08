@@ -8,10 +8,10 @@ export class AuthService {
 
   apiUrl = "/api/auth";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  login(username, password){
-    let loginUser = {username: username, password : password};
-    return this.http.post(this.apiUrl, loginUser);
+  login(username, password) {
+    let loginUser = { username: username, password: password };
+    return this.http.post(this.apiUrl + "/login", loginUser);
   }
 }

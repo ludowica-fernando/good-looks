@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionStorageService } from '../services/session-storage.service';
 
 @Component({
   selector: 'navbar',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  username: string;
+
+  constructor(private sessionService: SessionStorageService,
+  ) { }
 
   ngOnInit() {
+    this.username = this.sessionService.getUsername();
+  }
+
+  logout() {
+    this.sessionService.signout();
+    window.location.reload();
   }
 
 }
