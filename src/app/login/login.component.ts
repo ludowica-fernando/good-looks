@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionStorageService } from 'src/app/services/session-storage.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private sessionService: SessionStorageService,
     private authService: AuthService,
+    private cartService: CartService,
     private router: Router,
   ) { }
 
@@ -30,21 +32,25 @@ export class LoginComponent implements OnInit {
     this.authService.login(loginForm.username, loginForm.password).subscribe(
       data => {
         // console.log(data);
-        this.directUser(data);
+        this.init(data);
       });
   }
 
-  directUser(data) {
+  init(data) {
 
     if (data) {
+
       this.sessionService.saveToken(data.accessToken);
       this.sessionService.saveUsername(data.username);
       this.sessionService.saveUserId(data.userId);
+
+      this.cartService.getCart().subscribe();
 
       this.router.navigateByUrl('');
     }
 
   }
+
 
 
 }

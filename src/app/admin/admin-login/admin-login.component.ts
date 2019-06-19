@@ -16,13 +16,13 @@ export class AdminLoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private sessionService: SessionStorageService,
-    private cartService: CartService,
     private router: Router) { }
 
   ngOnInit() { }
 
   submit(form) {
     this.authService.login(form.username, form.password).subscribe(results => {
+
       if (results) {
         console.log(results);
         this.data = results;
@@ -30,8 +30,10 @@ export class AdminLoginComponent implements OnInit {
         this.sessionService.saveUsername(this.data.username);
         this.sessionService.saveToken(this.data.accessToken);
         this.sessionService.saveAuthorities(this.data.authorities);
+
         this.router.navigateByUrl('/admin/manage-products');
       }
+
     });
   }
 }

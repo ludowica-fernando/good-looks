@@ -44,6 +44,7 @@ export class CartService {
         if (cartId) return cartId;
 
         this.fetch().subscribe(data => {
+            // console.log(data);
             this.sessionService.saveCartId(data['id']);
             return this.sessionService.getCartId();
         });

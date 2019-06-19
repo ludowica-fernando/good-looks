@@ -19,6 +19,7 @@ export class UserComponent implements OnInit {
 
   register(registerForm) {
     console.log(registerForm);
+
     this.userService.register(registerForm).subscribe(
       data => {
         console.log("success");
